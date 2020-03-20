@@ -75,13 +75,16 @@ cutTool = cutImage()
 transSourceDir = None
 transTargetDir = None
 
-if len(sys.argv) < 2:
+def usage():
     print("用法: python tarnsmit.py souredir [targetdir]")
+if len(sys.argv) < 2:
+    usage()
     exit(0)
 else:
     transSourceDir = sys.argv[1]
-    if os.path.exists(transSourceDir) is None:
-        print("转换文件夹不能为空")
+    if os.path.exists(transSourceDir) is False:
+        print("转换文件夹不能为空\r\n")
+        usage()
         exit(-1)
 
     if len(sys.argv) == 2:
